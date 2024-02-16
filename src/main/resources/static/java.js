@@ -1,8 +1,10 @@
+//Oppretter et array for lagring av bilettobjekter
 let billetter = [];
 
 function kjopbillett () {
 
-     if (validerInputs()) {
+//Bruker en egen valideringsfunksjon for å sjekke inputfelter før denne funksjonen kjøres
+if (validerInputs()) {
     //Henter input-verdier fra bruker
     let fornavn = document.getElementById("fornavn").value;
     let etternavn = document.getElementById("etternavn").value
@@ -15,6 +17,7 @@ function kjopbillett () {
    const billett = {film, antall, fornavn, etternavn,telefonnr,epost}
     billetter.push(billett);
 
+   //Lager visning av billetter med tabell og for-løkke
     let ut= "<table><tr>" +
         "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>E-post</th>" +
         "</tr>";
@@ -34,11 +37,14 @@ function kjopbillett () {
     document.getElementById("e-post").value="";
  }
 }
+
+//Funksjon for sletting av billetter som tømmer array
 function slettbilletter () {
     billetter = [];
     document.getElementById("billettvisning").innerHTML="Billettene er slettet";
 }
 
+//Funksjon for validering av inputfelt, der hvert felt valideres ved if-setninger
 function validerInputs() {
     let antall = document.getElementById("antall").value;
     let fornavn = document.getElementById("fornavn").value;
@@ -68,8 +74,8 @@ function validerInputs() {
         return false;
     }
 
-    if (telefonnr === "" || isNaN(Number(telefonnr))) {
-        document.getElementById("telefonnr-feil").innerHTML="Skriv inn telefonnummer";
+    if (telefonnr === "" || isNaN(Number(telefonnr)) || telefonnr.length !== 8) {
+        document.getElementById("telefonnr-feil").innerHTML="Skriv inn et telefonnummer med 8 siffer";
         return false;
     }
 
