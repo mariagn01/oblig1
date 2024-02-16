@@ -59,26 +59,31 @@ function validerInputs() {
     document.getElementById("telefonnr-feil").textContent = "";
     document.getElementById("epost-feil").textContent = "";
 
+    //Sjekker at antall er over 0 og at det er skrevet inn et positivt heltall
     if (antall <= 0 || !Number.isInteger(parseInt(antall))) {
         document.getElementById("antall-feil").innerHTML="Skriv inn antall";
         return false;
     }
 
+    //Sjekker at inputboksen for fornavn ikke er tom
     if (fornavn === "") {
         document.getElementById("fornavn-feil").innerHTML="Skriv inn fornavn";
         return false;
     }
 
+    //Sjekker at inputboksen for etternavn ikke er tom
     if (etternavn === "") {
         document.getElementById("etternavn-feil").innerHTML="Skriv inn etternavn";
         return false;
     }
 
+    //Sjekker at telefonnummer ikke er tomt, og at det er et gyldig tall på 8 siffer
     if (telefonnr === "" || isNaN(Number(telefonnr)) || telefonnr.length !== 8) {
         document.getElementById("telefonnr-feil").innerHTML="Skriv inn et telefonnummer med 8 siffer";
         return false;
     }
 
+    //Sjekker at e-post er skrevet inn og har gyldig format ved hjelp av Regex
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (epost === "" || !emailRegex.test(epost)) {
         document.getElementById("epost-feil").innerHTML="Vennligst skriv inn en gyldig e-post";
