@@ -68,7 +68,7 @@ function validerInputs() {
         return false;
     }
 
-    if (telefonnr === "" || isNaN(telefonnr)) {
+    if (telefonnr === "" || isNaN(Number(telefonnr))) {
         document.getElementById("telefonnr-feil").innerHTML="Skriv inn telefonnummer";
         return false;
     }
