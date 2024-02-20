@@ -77,8 +77,9 @@ function validerInputs() {
         return false;
     }
 
-    //Sjekker at telefonnummer ikke er tomt, og at det er et gyldig tall på 8 siffer
-    if (telefonnr === "" || isNaN(Number(telefonnr)) || telefonnr.length !== 8) {
+    //Sjekker at telefonnummer ikke er tomt, og at det er et på mellom 7-15 siffer
+    let tlfRegex = /^\d{7,15}$/;
+    if (telefonnr === "" || !tlfRegex.test(telefonnr)) {
         document.getElementById("telefonnr-feil").innerHTML="Skriv inn et telefonnummer med 8 siffer";
         return false;
     }
